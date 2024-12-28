@@ -1,0 +1,123 @@
+[
+    {
+        "question": "What is the synonym of 'happy'?",
+        "options": ["Sad", "Joyful", "Angry", "Tired"],
+        "answer": 1
+    },
+    {
+        "question": "What is the opposite of 'fast'?",
+        "options": ["Quick", "Slow", "Swift", "Rapid"],
+        "answer": 1
+    },
+    {
+        "question": "Which of these is a noun?",
+        "options": ["Run", "Beautiful", "Happiness", "Quickly"],
+        "answer": 2
+    },
+    {
+        "question": "Which word is a verb?",
+        "options": ["Jump", "Bright", "Quick", "Soft"],
+        "answer": 0
+    },
+    {
+        "question": "What is the plural form of 'child'?",
+        "options": ["Childs", "Childes", "Children", "Child"],
+        "answer": 2
+    },
+    {
+        "question": "Choose the correct sentence:",
+        "options": [
+            "She go to school.",
+            "She goes to school.",
+            "She going to school.",
+            "She gone to school."
+        ],
+        "answer": 1
+    },
+    {
+        "question": "Which of these is an adjective?",
+        "options": ["Run", "Soft", "Happily", "Loudly"],
+        "answer": 1
+    },
+    {
+        "question": "What is the past tense of 'run'?",
+        "options": ["Runned", "Ran", "Running", "Runs"],
+        "answer": 1
+    },
+    {
+        "question": "Which sentence is correct?",
+        "options": [
+            "I has a cat.",
+            "I have a cat.",
+            "I haves a cat.",
+            "I having a cat."
+        ],
+        "answer": 1
+    },
+    {
+        "question": "Which of these is a preposition?",
+        "options": ["Quickly", "Under", "Soft", "Run"],
+        "answer": 1
+    },
+    {
+        "question": "What is the correct article for 'apple'?",
+        "options": ["A", "An", "The", "None"],
+        "answer": 1
+    },
+    {
+        "question": "What is the correct form of 'be' for 'They'?",
+        "options": ["Am", "Is", "Are", "Was"],
+        "answer": 2
+    },
+    {
+        "question": "What is the past tense of 'eat'?",
+        "options": ["Eat", "Eats", "Ate", "Eating"],
+        "answer": 2
+    },
+    {
+        "question": "Which word is spelled correctly?",
+        "options": ["Recieve", "Receive", "Receeve", "Reciave"],
+        "answer": 1
+    },
+    {
+        "question": "What is the comparative form of 'big'?",
+        "options": ["Biggest", "More big", "Bigger", "Bigly"],
+        "answer": 2
+    },
+    {
+        "question": "What is the synonym of 'beautiful'?",
+        "options": ["Ugly", "Pretty", "Dull", "Plain"],
+        "answer": 1
+    },
+    {
+        "question": "Which sentence uses the correct punctuation?",
+        "options": [
+            "What's your name",
+            "What's your name?",
+            "Whats your name?",
+            "What is your name,"
+        ],
+        "answer": 1
+    },
+    {
+        "question": "What is the correct spelling?",
+        "options": ["Definately", "Definitely", "Defenetly", "Definatly"],
+        "answer": 1
+    },
+    {
+        "question": "Choose the correct sentence:",
+        "options": [
+            "She don't like pizza.",
+            "She doesn't likes pizza.",
+            "She doesn't like pizza.",
+            "She don't likes pizza."
+        ],
+        "answer": 2
+    },
+    {
+        "question": "Which of these is a conjunction?",
+        "options": ["And", "Quick", "Soft", "Under"],
+        "answer": 0
+    }
+    
+]

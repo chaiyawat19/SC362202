@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <link
+      href="https://fonts.googleapis.com/css2?family=Jost:ital,wght@0,100..900;1,100..900&family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&family=Mitr:wght@200;300;400;500;600;700&family=Noto+Sans+Thai+Looped:wght@100;200;300;400;500;600;700;800;900&family=Noto+Sans+Thai:wght@100..900&family=Prompt:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Sixtyfour+Convergence&display=swap"
+      rel="stylesheet"
+    />
+    <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+    <link
+      href="https://cdn.jsdelivr.net/npm/@mdi/font@5.x/css/materialdesignicons.min.css"
+      rel="stylesheet"
+    />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+    <link
+      href="https://cdn.jsdelivr.net/npm/vuetify@3.7.4/dist/vuetify.min.css"
+      rel="stylesheet"
+    />
+    <script src="https://cdn.jsdelivr.net/npm/vuetify@3.7.4/dist/vuetify.min.js"></script>
+    <title>Assignment 2: Quiz App using VueJS with Vuetify</title>
+    <link rel="icon" href="img/069158ae8709c012755d8de9c0d00d76.jpg">
+    <style>
+      body {
+        font-family: "Noto Sans Thai";
+        padding: 1em 25%;
+  
+      
+      }
+      .v-messages, .v-input__details {
+        display: none !important;
+      }
+      #app {
+        display: block;
+        /* padding: 10em; */
+        font-size: 1em;
+      }
+      #app h1 {
+        font-size: xx-large;
+      }
+    </style>
+  </head>
+  <body>
+    <div id="app">
+
+      <div v-if="page==1" class="quiz border rounded pa-4 mb-10">
+        <div class="text-center bg-yellow-darken-1 rounded-lg px-6 my-5">
+          <h1>Math Quiz</h1>
+        </div>
+        <div class="d-flex justify-center ">
+          <img src="img/c9506c03ae33bdf542af13b39b843d76.gif" alt="" width="60%">
+        </div>
+        <p class="text-center">
+          แบบทดสอบนี้ถูกออกแบบมาเพื่อประเมินความรู้และทักษะพื้นฐานทางคณิตศาสตร์ในหัวข้อที่สำคัญ เช่น การคำนวณเชิงตัวเลข พีชคณิต เรขาคณิต และความสามารถในการแก้ปัญหา โดยแบบทดสอบมีเป้าหมายในการพัฒนาความคิดเชิงตรรกะและเสริมสร้างพื้นฐานที่จำเป็นสำหรับการเรียนรู้ในระดับที่สูงขึ้น
+        </p>
+        <div class="d-flex justify-center mt-6">
+          <v-btn @click="showQuiz()" color="yellow-darken-2">Started Quiz!</v-btn>
+        </div>
+      </div>
+
+      
+
+      <div v-if="page==2" class="container">
+          <v-btn @click="backHome()" class="bg-grey-darken-2 my-4">Back</v-btn>
+         
+    
+          <div v-for="(q,i) in qList" class="my-5 border rounded pa-5 elevation-2 border-info">
+            
+            <h3 class="text-yellow-darken-3">{{ i+1 }}). {{q.question}}</h3>
+            <v-radio-group v-model="answers[i]" class="ma-3" messages="">
+              <v-radio
+                color="yellow-darken-1"
+                v-for="(op_text,op_value) in q.options"
+                :label="op_text"
+                :value="op_value+1"
+              >{{op_value+1}}.</v-radio>
+            </v-radio-group>
+    
+          </div>
+          <div class="position-sticky rounded bottom-0 pa-4 bg-yellow-darken-1">
+            <v-btn v-if="validate()" @click="grading()"><v-icon>mdi-check</v-icon>ตรวจคำตอบ</v-btn>
+            <div v-else>กรุณาตอบให้ครบ</div>
+        </div>
+
+      </div>
+
+      <div v-if="page==3" class="border rounded text-center pa-4 mb-10">
+        <div class="d-flex justify-center mt-4">
+          <img src="img/fba24e5a6223d4044170f6d1b9327f49.gif" class="rounded" alt="" width="60%">
+        </div>
+        <h1 class="mt-5 text-yellow-darken-4">Total Score: </h1>
+        <p class="text-yellow-darken-3">you're got {{ score }} / {{ qList.length }}</p>
+        <v-btn @click="backHome()" class="bg-yellow-darken-2 my-4">Back</v-btn>
+      </div>
+
+    </div>
+    <script>
+      const { createApp } = Vue;
+      const { createVuetify } = Vuetify;
+      const vuetify = createVuetify();
+
+
+      const app = createApp({
+        data() {
+          return {
+            message: "Hello",
+            qList: [],
+            isVisible: false,
+            answers: [],
+            score: 0,
+            page:1
+          };
+        },
+        mounted() {
+          this.load_quiz();
+        },
+        methods: {
+          async load_quiz() {
+            var res = await fetch("quiz.json");
+            this.qList = await res.json();
+      
+          },
+
+          showQuiz() {
+            this.page = 2;
+          },
+
+          backHome() {
+            this.page = 1;
+            this.answers = [];
+            this.score = 0;
+          },
+
+          validate() {
+            for(var a in this.qList) {
+              
+                if(!this.answers[a]) return false;
+            }
+            return true;
+          },
+
+          grading() {
+            var score = 0;
+            for(var a in this.qList) {
+              if(this.answers[a]-1 == this.qList[a].answer) {
+                score++;
+              }
+            }
+            console.log(this.answers);
+            
+            this.score = score;
+            this.page = 3;
+            return score;
+          }
+        
+        },
+      });
+      app.use(vuetify).mount("#app");
+    </script>
+  </body>
+</html>

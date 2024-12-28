@@ -1,0 +1,102 @@
+[
+    {
+        "question": "What is the powerhouse of the cell?",
+        "options": ["Nucleus", "Ribosome", "Mitochondria", "Chloroplast"],
+        "answer": 2
+    },
+    {
+        "question": "Which organ system is responsible for transporting oxygen and nutrients throughout the body?",
+        "options": ["Digestive system", "Circulatory system", "Nervous system", "Respiratory system"],
+        "answer": 1
+    },
+    {
+        "question": "What is the process by which plants make their own food?",
+        "options": ["Respiration", "Transpiration", "Photosynthesis", "Osmosis"],
+        "answer": 2
+    },
+    {
+        "question": "What is the basic unit of life?",
+        "options": ["Tissue", "Organ", "Cell", "Organism"],
+        "answer": 2
+    },
+    {
+        "question": "Which macromolecule is primarily responsible for storing genetic information?",
+        "options": ["Carbohydrates", "Lipids", "Proteins", "Nucleic acids"],
+        "answer": 3
+    },
+    {
+        "question": "What is the term for a group of ecosystems that share similar climates and organisms?",
+        "options": ["Population", "Community", "Biome", "Habitat"],
+        "answer": 2
+    },
+    {
+        "question": "Which blood component is responsible for oxygen transport?",
+        "options": ["White blood cells", "Red blood cells", "Platelets", "Plasma"],
+        "answer": 1
+    },
+    {
+        "question": "What is the name of the process where DNA is copied into RNA?",
+        "options": ["Replication", "Translation", "Transcription", "Mutation"],
+        "answer": 2
+    },
+    {
+        "question": "Which part of the brain controls balance and coordination?",
+        "options": ["Cerebrum", "Cerebellum", "Medulla oblongata", "Hypothalamus"],
+        "answer": 1
+    },
+    {
+        "question": "What is the main function of the large intestine?",
+        "options": ["Digestion of proteins", "Absorption of water", "Breakdown of fats", "Production of enzymes"],
+        "answer": 1
+    },
+    {
+        "question": "What is the scientific term for the study of heredity?",
+        "options": ["Biology", "Genetics", "Cytology", "Ecology"],
+        "answer": 1
+    },
+    {
+        "question": "Which type of cell division results in the production of gametes?",
+        "options": ["Mitosis", "Meiosis", "Binary fission", "Budding"],
+        "answer": 1
+    },
+    {
+        "question": "What is the green pigment in plants that captures light energy?",
+        "options": ["Carotene", "Chlorophyll", "Xanthophyll", "Anthocyanin"],
+        "answer": 1
+    },
+    {
+        "question": "What structure connects muscles to bones?",
+        "options": ["Ligaments", "Tendons", "Cartilage", "Fascia"],
+        "answer": 1
+    },
+    {
+        "question": "Which organ is responsible for filtering blood and producing urine?",
+        "options": ["Liver", "Lungs", "Kidneys", "Pancreas"],
+        "answer": 2
+    },
+    {
+        "question": "What is the role of ribosomes in a cell?",
+        "options": ["Energy production", "Protein synthesis", "DNA replication", "Waste removal"],
+        "answer": 1
+    },
+    {
+        "question": "What type of biomolecule are enzymes classified as?",
+        "options": ["Lipids", "Carbohydrates", "Proteins", "Nucleic acids"],
+        "answer": 2
+    },
+    {
+        "question": "Which process in the water cycle involves the transformation of water vapor into liquid?",
+        "options": ["Evaporation", "Condensation", "Transpiration", "Precipitation"],
+        "answer": 1
+    },
+    {
+        "question": "What is the name of the longest bone in the human body?",
+        "options": ["Humerus", "Tibia", "Femur", "Radius"],
+        "answer": 2
+    },
+    {
+        "question": "Which part of the cell acts as a selective barrier, controlling the movement of substances in and out?",
+        "options": ["Cell wall", "Cytoplasm", "Cell membrane", "Nuclear envelope"],
+        "answer": 2
+    }
+]

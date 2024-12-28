@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Assignment 3: Quiz App using ReactJS</title>
+    <link rel="icon" href="img/icon-web.jpg">
+    <script src="https://unpkg.com/react@18/umd/react.development.js" crossorigin></script>
+    <script src="https://unpkg.com/react-dom@18/umd/react-dom.development.js" crossorigin></script>
+    <script src="https://unpkg.com/@babel/standalone/babel.min.js" crossorigin></script>
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN"
+      crossorigin="anonymous"
+    />
+    <link rel="stylesheet" href="style.css" />
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css"
+    />
+  </head>
+  <body>
+    <div id="myapp"></div>
+    <script type="text/babel">
+      class App extends React.Component {
+        state = {
+          quizData: [],
+          showQuizPage: false,
+          showScorePage: false,
+          answers: [],
+        };
+
+        goToQuizPage = () => this.setState({ showQuizPage: true });
+
+        goToScorePage = () => this.setState({ showScorePage: true, showQuizPage: false });
+
+        goToHomePage = () => this.setState({ showQuizPage: false, showScorePage: false });
+
+        async componentDidMount() {
+          const res = await fetch("quiz.json");
+          const data = await res.json();
+          this.setState({ quizData: data });
+        }
+
+        answerList = (questionIndex, answer) => {
+          this.setState((prevState) => {
+            const updatedAnswers = [...prevState.answers];
+            updatedAnswers[questionIndex] = answer;
+            return { answers: updatedAnswers };
+          });
+        };
+
+        isQuizCompleted = () => {
+          const { answers, quizData } = this.state;
+          return answers.length === quizData.length && !answers.includes(undefined);
+        };
+
+        render() {
+          const { quizData, showQuizPage, showScorePage, answers } = this.state;
+
+          if (showScorePage) {
+            return <ScorePage quizData={quizData} answers={answers} goToHomePage={this.goToHomePage} />;
+          }
+
+          if (showQuizPage) {
+            return (
+              <QuizPage
+                goToScorePage={this.goToScorePage}
+                quizData={quizData}
+                answerList={this.answerList}
+                isQuizCompleted={this.isQuizCompleted}
+              />
+            );
+          }
+
+          return (
+            <div className="Box">
+              <div className="tab-menu">
+                <ul className="left-menu">
+                  <li><i class="bi bi-list"></i></li>
+                  <li><i class="bi bi-arrow-left-short"></i></li>
+                  <li><i class="bi bi-arrow-right-short"></i></li>
+                  <li><i class="bi bi-plus"></i></li>
+                </ul>
+                <ul className="right-menu">
+                  <li><i class="bi bi-download"></i></li>
+                  <li><i class="bi bi-arrow-clockwise"></i></li>
+                  <li><i class="bi bi-x-lg"></i></li>
+                </ul>
+              </div>
+              <div className="bg-label"></div>
+              <div className="box-content">
+                <div className="icon-label">
+                  <img src="img/icon.gif" alt="Icon" width="100" />
+                </div>
+                <div className="heading">
+                  <h1>Biology Exam</h1>
+                  <hr />
+                  <span>˚◡̈🎄•⁺🕯º·˚♡</span>
+                  <p>
+                    The Biology Exam consists of 20 questions, covering cell biology,
+                    genetics, evolution, ecology, and human anatomy.
+                  </p>
+                  <button onClick={this.goToQuizPage} className="btn">Start Quiz!</button>
+                </div>
+              </div>
+            </div>
+          );
+        }
+      }
+
+      const QuizPage = ({ goToScorePage, quizData, answerList, isQuizCompleted }) => (
+        <>
+          {quizData.map((item, index) => (
+            <div className="Box-quiz" key={index}>
+              <div className="question">
+                <h4>{index + 1}. {item.question}</h4>
+                {item.options.map((option, optionIndex) => (
+                  <div className="option-box" key={optionIndex}>
+                    <input
+                      type="radio"
+                      name={`question-${index}`}
+                      id={`question-${index}-option-${optionIndex}`}
+                      value={optionIndex + 1}
+                      onChange={() => answerList(index, optionIndex + 1)}
+                    />
+                    <label htmlFor={`question-${index}-option-${optionIndex}`}>
+                      {option}
+                    </label>
+                  </div>
+                ))}
+              </div>
+            </div>
+          ))}
+          <button className="btn submit-btn" onClick={goToScorePage} disabled={!isQuizCompleted()}>
+            Submit Quiz
+          </button>
+        </>
+      );
+
+      const ScorePage = ({ quizData, answers, goToHomePage }) => {
+        const calculateScore = () => quizData.reduce(
+          (score, item, index) => (answers[index] === item.answer ? score + 1 : score), 0);
+
+        return (
+          <div className="Box">
+            <div className="tab-menu">
+              <ul className="left-menu">
+                <li><i class="bi bi-list"></i></li>
+                <li><i class="bi bi-arrow-left-short"></i></li>
+                <li><i class="bi bi-arrow-right-short"></i></li>
+                <li><i class="bi bi-plus"></i></li>
+              </ul>
+              <ul className="right-menu">
+                <li><i class="bi bi-download"></i></li>
+                <li><i class="bi bi-arrow-clockwise"></i></li>
+                <li><i class="bi bi-x-lg" id="close-btn" onClick={goToHomePage}></i></li>
+              </ul>
+            </div>
+            <div className="bg-label"></div>
+            <div className="box-content">
+              <div className="icon-label">
+                <img src="img/icon.gif" alt="Icon" width="100" />
+              </div>
+              <div className="heading">
+                <h1>Score Page</h1>
+                <hr />
+                <h4>Your Score: {calculateScore()} / {quizData.length}</h4>
+                <span>Great Job!</span>
+              </div>
+            </div>
+          </div>
+        );
+      };
+
+      const container = document.getElementById("myapp");
+      const root = ReactDOM.createRoot(container);
+      root.render(<App />);
+    </script>
+  </body>
+</html>
