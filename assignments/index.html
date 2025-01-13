@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Assignment 4: A-frame</title>
+    <link rel="icon" href="images.jpg">
+    <script src="https://aframe.io/releases/1.5.0/aframe.min.js"></script>
+  </head>
+  <body>
+    <a-scene>
+
+      <a-sound 
+        src="url(music.mp3)" 
+        autoplay="true" 
+        loop="true" 
+        volume="0.5">
+      </a-sound>
+
+      <a-assets>
+        <a-asset-item id="box" src="screen.glb"></a-asset-item>
+        <a-asset-item id="character" src="cat.glb"></a-asset-item>
+        <img id="gradient-sky" src="360_F_461793247_aTvjPN7O4wuJiYieweyxzaO1K82y0cHb.jpg" alt="Gradient Sky">
+      </a-assets>
+      <a-plane 
+        position="0 0 -5" 
+        rotation="-90 0 0" 
+        width="200" 
+        height="200" 
+        color="#000000">
+      </a-plane>
+      <a-entity gltf-model="#box" position="0 0 10"></a-entity>
+      <a-entity 
+        gltf-model="#character" 
+        position="0 0 -5" 
+        scale="5 5 5"
+        animation="property: rotation; to: 0 -360 0; loop: true; dur: 2000; easing: linear">
+      </a-entity>
+
+      <a-text position="-0.7 2.5 -2" width="6" value="663380195-2" color="#fff"></a-text>
+      <a-text position="-0.9 2.2 -2" value="Chaiyawat Sonachai" color="#fff"></a-text>
+
+      <a-text 
+        position="3 5 10" 
+        width="20" 
+        value="Have a nice day" 
+        color="#fff" 
+        rotation="0 180 0">
+      </a-text>
+
+      <a-box 
+        position="-1 5 10.5" 
+        color="#76323b" 
+        width="6" 
+        height="1.5" 
+        depth="0.1">
+      </a-box>
+
+      <a-box 
+        position="3 5 10.5" 
+        color="#76323b" 
+        width="2" 
+        height="1.5" 
+        depth="0.1">
+      </a-box>
+
+      <a-light type="ambient" color="#ffffff" intensity="0.5"></a-light>
+      <a-light 
+        type="directional" 
+        color="#ffffff" 
+        intensity="1" 
+        position="1 4 -3">
+      </a-light>
+      <a-light type="point" color="#ffffff" intensity="1.5" position="2 3 -4"></a-light>
+
+      <a-sky src="#gradient-sky"></a-sky>
+    </a-scene>
+  </body>
+</html>
